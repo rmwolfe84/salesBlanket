@@ -1,0 +1,26 @@
+{
+  "name": "salesblanket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/app.js --bundle --outfile=public/dist/bundle.js",
+    "bundle": "node build.js",
+    "dev": "esbuild src/app.js --bundle --outfile=public/dist/bundle.js --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.20.0",
+    "gulp": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-insert": "^0.5.0",
+    "html-webpack-plugin": "^5.6.3",
+    "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "vinyl-fs": "^4.0.0"
+  }
+}
