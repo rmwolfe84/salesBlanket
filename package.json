@@ -4,19 +4,33 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/app.js --bundle --outfile=public/dist/bundle.js",
-    "bundle": "node build.js",
-    "dev": "esbuild src/app.js --bundle --outfile=public/dist/bundle.js --watch"
+    "clean": "if exist public\\app\\dist\\ rd /s /q public\\app\\dist",
+    "make-dist": "if not exist public\\app\\dist mkdir public\\app\\dist",
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "start": "npm run build && firebase emulators:start --only hosting",
+    "dev": "npm run build && firebase emulators:start --only hosting",
+    "test": "jest",
+    "lint": "eslint src/**/*.js",
+    "serve": "firebase serve --only hosting",
+    "serve-marketing": "http-server public/marketing -p 8081",
+    "deploy": "npm run build && firebase deploy",
+    "deploy-marketing": "firebase deploy --only hosting:marketing"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "^0.20.0",
+    "concurrently": "^8.0.0",
+    "dotenv": "^16.4.7",
+    "dotenv-expand": "^12.0.1",
+    "esbuild": "^0.24.2",
+    "eslint": "^8.15.0",
     "gulp": "^5.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-insert": "^0.5.0",
     "html-webpack-plugin": "^5.6.3",
+    "jest": "^29.0.0",
     "webpack-merge": "^6.0.1"
   },
   "dependencies": {

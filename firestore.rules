@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check authentication
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Check if user is approved
+    function isApprovedUser() {
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid)) 
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.status == "approved";
+    }
+
+    // Check if user is admin
+    function isAdmin() {
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid)) 
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    // Check active assignment
+    function isActivelyAssigned(data) {
+      return data.assignedTo.hasAll([{
+        userId: request.auth.uid,
+        isActive: true
+      }]);
+    }
+
+    // Users collection rules
+    match /users/{userId} {
+      // Allow users to create and read their own document
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow read: if isAuthenticated() && request.auth.uid == userId;
+      // Allow users to update their own document
+      allow update: if isAuthenticated() && request.auth.uid == userId && 
+        // Only allow updating specific fields
+        request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['firstName', 'lastName', 'mobilePhone', 'textNotifications', 
+                   'lastActive', 'completedProfile', 'settings']);
+    }
+
+    // Contacts collection rules
+    match /contacts/{contactId} {
+      allow read: if isAuthenticated() 
+        && (isApprovedUser() || isAdmin())
+        && (isActivelyAssigned(resource.data) || isAdmin());
+      allow create: if isAuthenticated() && (isApprovedUser() || isAdmin());
+      allow update: if isAuthenticated() 
+        && (isApprovedUser() || isAdmin())
+        && (isActivelyAssigned(resource.data) || isAdmin());
+      allow delete: if isAuthenticated() 
+        && (isApprovedUser() || isAdmin())
+        && (isActivelyAssigned(resource.data) || isAdmin());
+    }
+
+    // Allow admins to manage system settings
+    match /settings/{document=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    // Workflow management rules
+    match /workflows/{workflowId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isAdmin();
+    }
+
+    // User Invites rules
+    match /userInvites/{inviteId} {
+      allow read, write: if isAuthenticated() && isAdmin();
+    }
+
+    // Workflow phases rules
+    match /workflows/{workflowId}/phases/{phaseId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isAdmin();
+    }
+
+    // Workflow statuses rules
+    match /workflows/{workflowId}/phases/{phaseId}/statuses/{statusId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isAdmin();
+    }
+  }
+}

@@ -1,0 +1,225 @@
+/* src/components/settings/rolemanagement.css */
+
+.role-management {
+    padding: 1.5rem;
+}
+
+/* Header Section */
+.role-header {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.role-header h2 {
+    color: #333;
+    margin: 0 0 0.5rem 0;
+}
+
+.role-description {
+    color: #666;
+    font-size: 0.875rem;
+}
+
+/* Users Table */
+.users-table {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-x: auto;
+}
+
+.users-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th,
+.users-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.users-table th {
+    font-weight: 500;
+    color: #666;
+    background: #f8f9fa;
+}
+
+/* User Info Styles */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.user-email {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Role Badges */
+.current-role {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.current-role.admin {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.current-role.manager {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.current-role.setter {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.current-role.closer {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+/* Role Select */
+.role-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 0.875rem;
+}
+
+.role-select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+/* Update Button */
+.update-role-btn {
+    padding: 0.5rem 1rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.update-role-btn:hover {
+    background: #45a049;
+}
+
+.update-role-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Unauthorized Message */
+.unauthorized-message {
+    text-align: center;
+    padding: 2rem;
+    color: #f44336;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.unauthorized-message p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Loading State */
+.loading-state {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #4CAF50;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .role-management {
+        padding: 1rem;
+    }
+
+    .users-table {
+        padding: 1rem;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: 0.75rem;
+    }
+
+    /* Stack table on mobile */
+    .users-table table {
+        display: block;
+    }
+
+    .users-table thead {
+        display: none;
+    }
+
+    .users-table tbody {
+        display: block;
+    }
+
+    .users-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #eee;
+        border-radius: 4px;
+    }
+
+    .users-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .users-table td:last-child {
+        border-bottom: none;
+    }
+
+    .users-table td:before {
+        content: attr(data-label);
+        font-weight: 500;
+        color: #666;
+    }
+}

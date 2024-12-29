@@ -1,0 +1,539 @@
+/* src/components/territory-management/styles/panels.css */
+
+/* Base Panel Styles */
+.territory-panel {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Common Panel Elements */
+.panel-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.panel-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.panel-header p {
+    margin: 0.5rem 0 0;
+    color: #666;
+    font-size: 0.875rem;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.status-badge.active {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.inactive {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* Assignment Panel Specific Styles */
+.assignment-panel {
+    composes: territory-panel;
+}
+
+.assignments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.assignment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.assignment-item:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-name {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Role Badges */
+.role-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.role-badge.territoryManager { background: #e3f2fd; color: #1976d2; }
+.role-badge.regionManager { background: #e8f5e9; color: #2e7d32; }
+.role-badge.districtManager { background: #fff3e0; color: #e65100; }
+.role-badge.teamLeader { background: #f3e5f5; color: #7b1fa2; }
+.role-badge.setter { background: #e0f2f1; color: #00796b; }
+.role-badge.closer { background: #fce4ec; color: #c2185b; }
+
+/* Management Panel Specific Styles */
+.management-panel {
+    composes: territory-panel;
+}
+
+.management-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.status-section,
+.actions-section,
+.regions-section,
+.settings-section {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.status-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.regions-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.settings-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Territory Info Panel Specific Styles */
+.info-panel {
+    composes: territory-panel;
+}
+
+.territory-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.overview-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.overview-item .material-icons {
+    color: #4CAF50;
+    font-size: 24px;
+}
+
+.overview-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.overview-label {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.overview-value {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Statistics Grid */
+.territory-statistics,
+.recent-activity {
+    margin-bottom: 1.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.stat-item {
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #4CAF50;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+/* Activity List */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.activity-item .material-icons {
+    color: #4CAF50;
+    font-size: 20px;
+}
+
+.activity-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.activity-description {
+    color: #333;
+    font-size: 0.875rem;
+}
+
+.activity-time {
+    color: #666;
+    font-size: 0.75rem;
+}
+
+/* Performance Metrics */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.metric-item {
+    padding: 1rem;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+}
+
+.metric-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.metric-title {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.metric-value {
+    font-weight: 500;
+    color: #333;
+}
+
+.metric-progress {
+    width: 100%;
+    height: 6px;
+    background: #f5f5f5;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+/* Common Action Elements */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.primary-action {
+    background: #4CAF50;
+    color: white;
+}
+
+.primary-action:hover {
+    background: #45a049;
+}
+
+.secondary-action {
+    background: #f5f5f5;
+    color: #666;
+    border: 1px solid #e0e0e0;
+}
+
+.secondary-action:hover {
+    background: #e0e0e0;
+}
+
+.danger {
+    color: #f44336;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.5rem;
+    padding: 0 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: white;
+    color: #333;
+    font-size: 0.875rem;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .territory-panel {
+        padding: 1rem;
+    }
+
+    .assignment-item,
+    .activity-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .action-buttons,
+    .settings-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .form-group {
+        padding: 0 1rem;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 1rem;
+    }
+
+    .stats-grid,
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .territory-panel,
+    .modal-content {
+        background: #1a1a1a;
+    }
+
+    .panel-header {
+        border-color: #333;
+    }
+
+    .panel-header h3,
+    .modal-header h3 {
+        color: #fff;
+    }
+
+    .panel-header p {
+        color: #999;
+    }
+
+    .assignment-item,
+    .activity-item,
+    .metric-item,
+    .stat-item {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .status-section,
+    .actions-section,
+    .regions-section,
+    .settings-section {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .user-name,
+    .metric-value,
+    .overview-value {
+        color: #fff;
+    }
+
+    .activity-description {
+        color: #fff;
+    }
+
+    .form-group label {
+        color: #fff;
+    }
+
+    .form-group select,
+    .form-group input {
+        background: #2d2d2d;
+        border-color: #404040;
+        color: #fff;
+    }
+
+    .secondary-action {
+        background: #2d2d2d;
+        border-color: #404040;
+        color: #fff;
+    }
+
+    .secondary-action:hover {
+        background: #404040;
+    }
+
+    .metric-progress {
+        background: #404040;
+    }
+}

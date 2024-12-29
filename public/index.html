@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sales Blanket</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SalesBlanket - Field Sales Management Platform">
+    <title>SalesBlanket</title>
+    
+    <!-- Fonts and Styles -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/styles.css">
+    <link rel="stylesheet" href="/styles.css">
 
-  <!-- Firebase SDKs - keeping only what we need now -->
-  <script defer src="/__/firebase/11.1.0/firebase-app-compat.js"></script>
-  <script defer src="/__/firebase/11.1.0/firebase-auth-compat.js"></script>
-  <script defer src="/__/firebase/11.1.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
-  <!-- Initialize Firebase -->
-  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8kQcCqXqvKLn1C0pu0RWbr4Kw-gYF6jw&libraries=drawing" loading="async"></script>
 
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="/styles.css">
+    <!-- Firebase Initialization -->
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPBrfoqBwcazXXtteV0AM9T9klwYLigfs",
+            authDomain: "salesblanket.firebaseapp.com",
+            projectId: "salesblanket",
+            storageBucket: "salesblanket.firebasestorage.app",
+            messagingSenderId: "70376660372",
+            appId: "1:70376660372:web:6c4292246d100ebd118381"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Get auth and firestore instances
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Make services globally available
+        window.firebaseAuth = auth;
+        window.firebaseDB = db;
+    </script>
+
+    <!-- Application Bundle -->
+    <script defer src="dist/bundle.js"></script>
 </head>
-
 <body>
-  <app-root></app-root>
-
-  <!-- Our app script -->
-  <script src="/dist/bundle.js" defer></script>
+    <app-root>
+        <header-bar></header-bar>
+        <nav-menu></nav-menu>
+        <main id="route-content"></main>
+        <footer-bar></footer-bar>
+    </app-root>
 </body>
-
 </html>

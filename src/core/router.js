@@ -1,54 +1,80 @@
 export class Router {
     constructor() {
         this.routes = {
-            '': false,             
-            'home': false,          
+            '': 'landing',
+            'landing': false,
+            'login': false,
+            '404': false,
             'unauthorized': false,
-            'complete-profile': false, 
-            'pending-approval': false,
             'dashboard': true,
-            'canvasser': true,
-            'inspection': true,
-            'settings': true
+            'daily-view': true,
+            'contacts': true,
+            'addresses': true,
+            'map': true,
+            'appointments': true,
+            'tasks': true,
+            'calendar': true,
+            'settings': true,
+            'leads': true,
+            'canvasser-management': true,
+            'territories': true,
+            'inspector-management': true
         };
 
+        this.currentPath = '';
         this.handleRoute = this.handleRoute.bind(this);
         window.addEventListener('hashchange', this.handleRoute);
-        this.handleRoute(); // Handle initial route
+        this.handleRoute();
     }
 
     async handleRoute() {
-        const path = window.location.hash.slice(1);
-        const isAuthenticated = !!firebase.auth().currentUser;
-        const routeContent = document.getElementById('route-content');
-
-        console.log('Router debug:', {
-            path,
-            isAuthenticated,
-            routeContent: !!routeContent,
-            routes: this.routes
-        });
-
-        // Home page for root or #home
-        if (!path || path === 'home') {
-            routeContent.innerHTML = `<home-view></home-view>`;
+        const path = window.location.hash.slice(1) || 'landing';
+    
+        if (path === this.currentPath) {
+            console.log(`Already on route: ${path}, skipping render`);
             return;
         }
-
+    
+        console.log(`Navigating to route: ${path}`);
+    
+        const routeContent = document.getElementById('route-content');
+        if (!routeContent) {
+            console.error("Error: 'route-content' container not found.");
+            return;
+        }
+    
         // Check if route exists
         if (!this.routes.hasOwnProperty(path)) {
-            console.log('Route not found:', path);
-            window.location.hash = '404';
+            console.error("Route not found:", path);
+            window.location.hash = 'landing';
             return;
         }
 
-        // Check for protected routes
-        if (this.routes[path] === true && !isAuthenticated) {
-            window.location.hash = 'unauthorized';
+        // Check auth state for protected routes
+        const isProtectedRoute = this.routes[path] === true;
+        const user = firebase.auth().currentUser;
+
+        if (isProtectedRoute && !user) {
+            console.log('Protected route accessed without auth, redirecting to landing');
+            window.location.hash = 'landing';
             return;
         }
-
-        console.log('Attempting to mount:', `<${path}-view></${path}-view>`);
-        routeContent.innerHTML = `<${path}-view></${path}-view>`;
+    
+        this.currentPath = path;
+    
+        while (routeContent.firstChild) {
+            routeContent.removeChild(routeContent.firstChild);
+        }
+    
+        const tagName = path === '404' ? 'not-found-view' : `${path}-view`;
+        console.log(`Attempting to create component: ${tagName}`);
+    
+        try {
+            const element = document.createElement(tagName);
+            routeContent.appendChild(element);
+        } catch (error) {
+            console.error(`Failed to create element for route: ${path}`, error);
+            window.location.hash = 'landing';
+        }
     }
 }

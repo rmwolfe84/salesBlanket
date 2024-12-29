@@ -11,6 +11,17 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "headers": [
+      {
+        "source": "**/*.js",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript"
+          }
+        ]
+      }
     ]
   },
   "firestore": {
@@ -25,16 +36,29 @@
         "node_modules",
         ".git",
         "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
+        "firebase-debug.*.log"
       ],
       "predeploy": [
         "npm --prefix \"$RESOURCE_DIR\" run lint"
       ]
     }
   ],
-  "storage": {
-    "rules": "storage.rules"
+  "emulators": {
+    "hosting": [
+      {
+        "target": "app",
+        "port": 5000
+      },
+      {
+        "target": "marketing",
+        "port": 5001
+      }
+    ],
+    "firestore": {
+      "port": 8080
+    },
+    "functions": {
+      "port": 5002
+    }
   }
 }
- 

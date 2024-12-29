@@ -1,0 +1,19 @@
+{"users": [
+{
+  "localId": "QKr29LxUKFUfX80ghkeElCewMec2",
+  "email": "robert@allsquareroofing.com",
+  "emailVerified": true,
+  "displayName": "Robert Wolfe",
+  "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKdExqgv_8jvXtfPaFN4Xe0fvy5tjci44hEJ1mIA7MlPlEhnA=s96-c",
+  "lastSignedInAt": "1734384240428",
+  "createdAt": "1734384240427",
+  "providerUserInfo": [
+    {
+      "providerId": "google.com",
+      "rawId": "113127452623216978798",
+      "email": "robert@allsquareroofing.com",
+      "displayName": "Robert Wolfe",
+      "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKdExqgv_8jvXtfPaFN4Xe0fvy5tjci44hEJ1mIA7MlPlEhnA=s96-c"
+    }
+  ]
+}]}

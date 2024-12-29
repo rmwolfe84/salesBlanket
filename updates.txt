@@ -1,0 +1,12 @@
+# Updates Log
+
+## Version 1.0.1
+Date: 12/19/2024
+Changes:
+- Fixed authentication flow to direct to daily-view instead of settings page
+- Added daily-view button to navigation menu
+- Corrected routes organization and imports
+- Added profile completion notification instead of forced redirect
+- Implemented proper routing for authenticated/public pages
+
+Previous version: 1.0.0

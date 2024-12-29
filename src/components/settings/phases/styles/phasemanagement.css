@@ -1,0 +1,208 @@
+/* src/components/settings/phases/styles/phasemanagement.css */
+
+.phase-management {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Workflow Selection Styles */
+.workflow-selection {
+    padding: 1rem 0;
+}
+
+.workflows-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.workflow-card {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.workflow-card:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transform: translateY(-1px);
+}
+
+.workflow-info h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.125rem;
+}
+
+.collection-type {
+    display: block;
+    color: #666;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.select-workflow-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+}
+
+.select-workflow-btn:hover {
+    background: #45a049;
+}
+
+/* Phase Management Styles */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.header-info h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.25rem;
+}
+
+.add-phase-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+}
+
+.add-phase-btn:hover {
+    background: #45a049;
+}
+
+/* Phase List Styles */
+.phases-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.phase-item {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s;
+}
+
+.phase-item:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.phase-color {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.phase-info {
+    flex: 1;
+}
+
+.phase-info h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1rem;
+}
+
+.phase-info p {
+    margin: 0.25rem 0 0;
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.phase-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.edit-phase-btn,
+.manage-stages-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.manage-stages-btn {
+    padding: 0.5rem 1rem;
+}
+
+.edit-phase-btn:hover,
+.manage-stages-btn:hover {
+    background: #f5f5f5;
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.empty-state p {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .phase-management {
+        padding: 1rem;
+    }
+
+    .phase-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .phase-actions {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .manage-stages-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
